@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <a href="{{ url_for('livros.novo') }}">+ Adicionar livro</a>
+
+    {% for livro in livros %}
+
+        <h3>{{ livro.titulo }}</h3>
+        <p>{{ livro.autor }}</p>
+        <p>{{ livro.status }}</p>
+
+        {% if livro.status == 'lido' %}
+            <p>Nota: {{ livro.nota }}</p>
+        {% endif %}
+
+        <a href="{{ url_for('livros.editar', livro_id=livro.id) }}">Editar</a>
+
+        <form method="POST" action="{{ url_for('livros.remover', livro_id=livro.id) }}">
+            <button type="submit">Remover</button>
+        </form>
+
+    {% endfor %}
+
+{% endblock %}
