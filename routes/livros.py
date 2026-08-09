@@ -6,6 +6,7 @@ from models.livro import (
     atualizar_livro,
     remover_livro,
     buscar_livro_por_id,
+    estatistica_usuario,
 )
 
 
@@ -81,3 +82,14 @@ def remover(livro_id):
     remover_livro(livro_id)
     flash("Livro removido.")
     return redirect(url_for('livros.listar'))
+
+#--------------------- ESTATISTICAS -----------------------------------
+
+@livros_bp.route("/estatisticas")
+@login_required
+def estatisticas():
+
+    usuario_id = session["usuario_id"]
+    estatisticas = estatistica_usuario(usuario_id)
+    
+    return render_template("livros/estatisticas.html", estatisticas=estatisticas)

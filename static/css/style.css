@@ -1,0 +1,31 @@
+:root {
+    --cor-destaque: #c9a15a;
+    --cor-fundo: #14181d;
+    --cor-papel: #f3ecdd;
+    --cor-papel-borda: #e4d9c0;
+    --cor-texto-claro: #ede6d6;
+    --cor-texto-escuro: #241f1a;
+    --cor-texto-mutado: #8a7a64;
+    --cor-status-quero-ler: #5b7a8c;
+    --cor-status-lendo: #c9a15a;
+    --cor-status-lido: #4f6f52;
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto-claro);
+}
+
+ 
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--cor-destaque);
+    color: var(--cor-texto-escuro);
+}

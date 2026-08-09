@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <p>Total de livros: {{ estatisticas.total }}</p>
+    <p>Livros lidos: {{ estatisticas.lidos }}</p>
+
+    {% if estatisticas.media %}
+        <p>Nota média: {{ estatisticas.media }}</p>
+    {% else %}
+        <p>Nota média: -</p>
+    {% endif %}
+
+{% endblock %}
