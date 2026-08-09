@@ -29,3 +29,11 @@ button {
     background-color: var(--cor-destaque);
     color: var(--cor-texto-escuro);
 }
+
+form {
+    background-color: var(--cor-papel);
+    color: var(--cor-texto-escuro);
+    padding: 30px;
+    border-radius: 8px;
+    width: 340px;
+}
