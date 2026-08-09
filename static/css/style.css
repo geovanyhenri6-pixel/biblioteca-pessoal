@@ -37,3 +37,14 @@ form {
     border-radius: 8px;
     width: 340px;
 }
+
+input {
+   width: 100%;
+   box-sizing: border-box;
+   background-color: white;
+   color: var(--cor-texto-escuro);
+   border: 1px solid var(--cor-papel-borda);
+   border-radius: 4px;
+   padding: 10px;
+   margin-bottom: 15px;
+}
