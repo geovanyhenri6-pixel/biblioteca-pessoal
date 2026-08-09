@@ -3,7 +3,7 @@ from routes.auth import login_required
 from models.livro import (
     listar_livros_usuario,
     criar_livro,
-    atualizar_status,
+    atualizar_livro,
     remover_livro,
     buscar_livro_por_id,
 )
@@ -53,12 +53,14 @@ def editar(livro_id):
         return redirect(url_for('livros.listar'))
 
     if request.method == "POST":
+        titulo = request.form.get('titulo')
+        autor = request.form.get('autor')
         status = request.form.get('status')
-        nota_raw = request.form.get("nota")
+        nota_raw = request.form.get('nota')
         nota = float(nota_raw) if nota_raw else None
 
-        atualizar_status(livro_id, status, nota)
-        flash("Status atualizados!")
+        atualizar_livro(livro_id, titulo, autor, status, nota)
+        flash("Livro atualizado!")
 
         return redirect(url_for('livros.listar'))
     return render_template('livros/form.html', livro=livro)

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <form method="POST">
+        <input type="text" name="titulo" value="{% if livro %}{{ livro.titulo }}{% endif %}">
+        <input type="text" name="autor" value="{% if livro %}{{ livro.autor }}{% endif %}">
+        
+        <select name="status">
+            <option value="quero_ler" {% if livro and livro.status == 'quero_ler' %}selected{% endif %}>Quero ler</option>
+            <option value="lendo" {% if livro and livro.status == 'lendo' %}selected{% endif %}>Lendo</option>
+            <option value="lido" {% if livro and livro.status == 'lido' %}selected{% endif %}>Lido</option>
+        </select>
+        <input type="number" name="nota" step="0.1" min="1" max="10" value="{% if livro and livro.nota %}{{ livro.nota }}{% endif %}">
+        <button type="submit">Salvar livro</button>
+    </form>
+
+{% endblock %}

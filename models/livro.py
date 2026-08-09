@@ -30,14 +30,14 @@ def listar_livros_usuario(usuario_id, status=None):
     return cursor.fetchall()
 
 
-#--------------------- ATUALIZAR STATUS -----------------------
+#--------------------- ATUALIZAR LIVRO -----------------------
 
-def atualizar_status(livro_id, status, nota=None):
+def atualizar_livro(livro_id, titulo, autor, status, nota=None):
     db = get_db()
 
     cursor = db.execute(
-        "UPDATE livros SET status = ?, nota = ? WHERE id = ?",
-        (status, nota, livro_id)
+        "UPDATE livros SET titulo = ?, autor = ?, status = ?, nota = ? WHERE id = ?",
+        (titulo, autor, status, nota, livro_id)
     )
 
     db.commit()
