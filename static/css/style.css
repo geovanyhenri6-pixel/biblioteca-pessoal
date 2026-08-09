@@ -19,6 +19,7 @@ body {
     min-height: 100vh;
     background-color: var(--cor-fundo);
     color: var(--cor-texto-claro);
+    font-family: 'Work Sans', sans-serif;
 }
 
  
@@ -47,4 +48,17 @@ input {
    border-radius: 4px;
    padding: 10px;
    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    color: var(--cor-texto-mutado);
+    font-size: 13px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+h3 {
+    font-family: 'Fraunces', serif;
 }
