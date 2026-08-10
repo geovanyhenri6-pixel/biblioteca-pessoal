@@ -26,9 +26,15 @@ body {
 button {
     padding: 10px 20px;
     border: none;
+    appearance: none;
     border-radius: 4px;
     background-color: var(--cor-destaque);
     color: var(--cor-texto-escuro);
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #a98442;
 }
 
 form {
@@ -61,4 +67,19 @@ label {
 
 h3 {
     font-family: 'Fraunces', serif;
+}
+
+a {
+    color: var(--cor-destaque);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.barra-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--cor-fundo);
+    padding: 20px;
+    margin-bottom: 20px;
 }

@@ -2,6 +2,11 @@
 
 {% block content %}
 
+    <div class="barra-topo">
+        <h1>Biblioteca Pessoal</h1>
+        <a href="{{ url_for('auth.logout') }}">Sair</a>
+    </div>
+
     <a href="{{ url_for('livros.novo') }}">+ Adicionar livro</a>
 
     {% for livro in livros %}
