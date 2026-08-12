@@ -9,22 +9,31 @@
 
     <a href="{{ url_for('livros.novo') }}">+ Adicionar livro</a>
 
-    {% for livro in livros %}
+    {% for livro in livros %}~
 
-        <h3>{{ livro.titulo }}</h3>
-        <p>{{ livro.autor }}</p>
-        <p>{{ livro.status }}</p>
+    <div class="cartao-livro">
+        <div class="linha-principal">
+            <div class="faixa-status status-{{ livro.status }}"></div>
+            <div class="livro-texto">
+                <h3>{{ livro.titulo }}</h3>
+                <p>{{ livro.autor }}</p>
+            </div>
+            <div class="livro-lado-direito">
+                <span class="tag-status status-{{ livro.status }}">{{ livro.status }}</span>
+                {% if livro.status == 'lido' %}
+                    <p class="nota">{{ livro.nota }}</p>
+                {% endif %}
+            </div>
+        </div>
 
-        {% if livro.status == 'lido' %}
-            <p>Nota: {{ livro.nota }}</p>
-        {% endif %}
-
-        <a href="{{ url_for('livros.editar', livro_id=livro.id) }}">Editar</a>
-
-        <form method="POST" action="{{ url_for('livros.remover', livro_id=livro.id) }}">
-            <button type="submit">Remover</button>
-        </form>
-
+        <div class="acoes-livro">
+            <a href="{{ url_for('livros.editar', livro_id=livro.id) }}">Editar</a>
+            <form method="POST" action="{{ url_for('livros.remover', livro_id=livro.id) }}">
+                <button type="submit">Remover</button>
+            </form>
+        </div>
+    </div>
+        
     {% endfor %}
 
 {% endblock %}
