@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <form method="POST">
+    <form method="POST" class="form-cartao">
         <input type="text" name="titulo" value="{% if livro %}{{ livro.titulo }}{% endif %}">
         <input type="text" name="autor" value="{% if livro %}{{ livro.autor }}{% endif %}">
         

@@ -38,7 +38,7 @@ button:hover {
     background-color: #a98442;
 }
 
-form {
+.form-cartao {
     background-color: var(--cor-papel);
     color: var(--cor-texto-escuro);
     padding: 30px;
@@ -83,4 +83,67 @@ a {
     background-color: var(--cor-fundo);
     padding: 20px;
     margin-bottom: 20px;
+}
+
+.cartao-livro {
+    background-color: var(--cor-papel);
+    color: var(--cor-texto-escuro);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 14px;
+    width: 480px;
+}
+
+.linha-principal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.faixa-status {
+    width: 7px;
+    height: 40px;
+    border-radius: 2px;
+}
+
+.status-quero_ler {
+    background-color: var(--cor-status-quero-ler);
+    color: white;
+}
+
+.status-lendo {
+    background-color: var(--cor-status-lendo);
+    color: var(--cor-texto-escuro);
+}
+
+.status-lido {
+    background-color: var(--cor-status-lido);
+    color: white;
+}
+
+.tag-status {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.acoes-livro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.acoes-livro a {
+    color: var(--cor-texto-escuro);
+    font-weight: normal;
+    font-size: 12px;
+}
+
+.acoes-livro button {
+    padding: 4px 10px;
+    font-size: 12px;
 }
