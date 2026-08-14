@@ -194,3 +194,11 @@ h1 {
     color: var(--cor-texto-escuro);
     flex-shrink: 0;
 }
+
+.linha-botoes-final {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 340px;
+    margin-top: 10px;
+}
