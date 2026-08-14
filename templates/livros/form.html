@@ -15,4 +15,10 @@
         <button type="submit">Salvar livro</button>
     </form>
 
+    {% if livro %}
+        <form method="POST" action="{{ url_for('livros.remover', livro_id=livro.id) }}">
+            <button type="submit">Remover</button>
+        </form>
+    {% endif %}
+    
 {% endblock %}

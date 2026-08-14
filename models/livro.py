@@ -15,6 +15,7 @@ def criar_livro(usuario_id, titulo, autor):
 #---------------------- LISTAR LIVROS -------------------------
 
 def listar_livros_usuario(usuario_id, status=None):
+    
     db = get_db()
     if status is None:
         cursor = db.execute(

@@ -6,34 +6,35 @@
         <h1>Biblioteca Pessoal</h1>
         <a href="{{ url_for('auth.logout') }}">Sair</a>
     </div>
-
+    <div class="filtros">
+        <a class="filtro {% if not status_atual %}ativa{% endif %}" href="{{ url_for('livros.listar') }}">Todos</a>
+        <a class="filtro {% if status_atual == 'quero_ler' %}ativa{% endif %}" href="{{ url_for('livros.listar', status='quero_ler') }}">Quero ler</a>
+        <a class="filtro {% if status_atual == 'lendo' %}ativa{% endif %}" href="{{ url_for('livros.listar', status='lendo') }}">Lendo</a>
+        <a class="filtro {% if status_atual == 'lido' %}ativa{% endif %}" href="{{ url_for('livros.listar', status='lido') }}">Lido</a>
+    </div>
     <a href="{{ url_for('livros.novo') }}">+ Adicionar livro</a>
 
     {% for livro in livros %}
 
-    <div class="cartao-livro">
-        <div class="linha-principal">
-            <div class="faixa-status status-{{ livro.status }}"></div>
-            <div class="livro-texto">
-                <h3>{{ livro.titulo }}</h3>
-                <p>{{ livro.autor }}</p>
-            </div>
-            <div class="livro-lado-direito">  
-                <span class="tag-status status-{{ livro.status }}">{% if livro.status == 'quero_ler' %}Quero ler{% elif livro.status == 'lendo' %}Lendo{% else %}Lido{% endif %}</span>
-                {% if livro.status == 'lido' %}
-                    <p class="nota">{{ livro.nota }}</p>
-                {% endif %}
+    <div class="linha-livro">
+        <div class="cartao-livro">
+            <div class="linha-principal">
+                <div class="faixa-status status-{{ livro.status }}"></div>
+                <div class="livro-texto">
+                    <h3>{{ livro.titulo }}</h3>
+                    <p>{{ livro.autor }}</p>
+                </div>
+                <div class="livro-lado-direito">  
+                    <span class="tag-status status-{{ livro.status }}">{% if livro.status == 'quero_ler' %}Quero ler{% elif livro.status == 'lendo' %}Lendo{% else %}Lido{% endif %}</span>
+                    {% if livro.status == 'lido' %}
+                        <p class="nota">{{ livro.nota }}</p>
+                    {% endif %}
+                </div>
             </div>
         </div>
-
-        <div class="acoes-livro">
-            <a href="{{ url_for('livros.editar', livro_id=livro.id) }}">Editar</a>
-            <form method="POST" action="{{ url_for('livros.remover', livro_id=livro.id) }}">
-                <button type="submit">Remover</button>
-            </form>
-        </div>
+        <a href="{{ url_for('livros.editar', livro_id=livro.id) }}" class="icone-editar">✎</a>
     </div>
-        
+    
     {% endfor %}
 
 {% endblock %}

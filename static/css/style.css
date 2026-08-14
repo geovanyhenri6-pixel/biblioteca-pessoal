@@ -90,7 +90,6 @@ a {
     color: var(--cor-texto-escuro);
     border-radius: 8px;
     padding: 16px;
-    margin-bottom: 14px;
     width: 480px;
 }
 
@@ -102,7 +101,7 @@ a {
 
 .faixa-status {
     width: 7px;
-    height: 40px;
+    height: 64px;
     border-radius: 2px;
 }
 
@@ -146,4 +145,52 @@ a {
 .acoes-livro button {
     padding: 4px 10px;
     font-size: 12px;
+}
+
+.filtro {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-right: 8px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    font-weight: normal;
+    color: var(--cor-texto-mutado);
+    border: 1px solid;
+}   
+
+.filtro.ativa {
+    background-color: var(--cor-destaque);
+    color: var(--cor-texto-escuro);
+}
+
+h1 {
+    font-family: 'Fraunces' serif;
+    font-size: 22px;
+    margin: 0;
+}
+
+.barra-topo a {
+    color: var(--cor-texto-mutado);
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.linha-livro {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.icone-editar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: var(--cor-papel);
+    color: var(--cor-texto-escuro);
+    flex-shrink: 0;
 }

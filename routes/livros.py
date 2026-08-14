@@ -9,7 +9,6 @@ from models.livro import (
     estatistica_usuario,
 )
 
-
 livros_bp = Blueprint("livros", __name__)
 
 #----------------------- LISTAR -----------------------------
@@ -17,11 +16,12 @@ livros_bp = Blueprint("livros", __name__)
 @livros_bp.route("/livros")
 @login_required
 def listar():
-     
+    
     usuario_id = session["usuario_id"]
-    livros = listar_livros_usuario(usuario_id)
-
-    return render_template("livros/lista.html", livros=livros)
+    status = request.args.get('status')
+    livros = listar_livros_usuario(usuario_id, status)
+   
+    return render_template("livros/lista.html", livros=livros, status_atual=status)
 
 #----------------------- ADICIONAR LIVRO --------------------
 
