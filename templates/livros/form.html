@@ -3,20 +3,33 @@
 {% block content %}
 
     <form method="POST" class="form-cartao" id="form-livro">
-        <input type="text" name="titulo" value="{% if livro %}{{ livro.titulo }}{% endif %}">
-        <input type="text" name="autor" value="{% if livro %}{{ livro.autor }}{% endif %}">
+        <label for="titulo">TITULO</label>
+        <input type="text" name="titulo" id="titulo" value="{% if livro %}{{ livro.titulo }}{% endif %}">
+        <label for="autor">AUTOR</label>
+        <input type="text" name="autor" id="autor" value="{% if livro %}{{ livro.autor }}{% endif %}">
         
-        <select name="status">
-            <option value="quero_ler" {% if livro and livro.status == 'quero_ler' %}selected{% endif %}>Quero ler</option>
-            <option value="lendo" {% if livro and livro.status == 'lendo' %}selected{% endif %}>Lendo</option>
-            <option value="lido" {% if livro and livro.status == 'lido' %}selected{% endif %}>Lido</option>
-        </select>
-        <input type="number" name="nota" step="0.1" min="1" max="10" value="{% if livro and livro.nota %}{{ livro.nota }}{% endif %}">
+        <label>STATUS</label>
+        <div class="segmentado">
+            <input type="radio" name="status" value="quero_ler" id="status-quero_ler" class="radio-segmento"
+                {% if not livro or livro.status == 'quero_ler' %}checked{% endif %}>
+            <label for="status-quero_ler" class="opcao-segmento">Quero ler</label>
+
+            <input type="radio" name="status" value="lendo" id="status-lendo" class="radio-segmento"
+                {% if livro and livro.status == 'lendo' %}checked{% endif %}>
+            <label for="status-lendo" class="opcao-segmento">Lendo</label>
+
+            <input type="radio" name="status" value="lido" id="status-lido" class="radio-segmento"
+                {% if livro and livro.status == 'lido' %}checked{% endif %}>
+            <label for="status-lido" class="opcao-segmento">Lido</label>
+        </div>
+
+        <label for="nota">NOTA</label>
+        <input type="number" name="nota" id="nota" step="0.1" min="1" max="10" value="{% if livro and livro.nota %}{{ livro.nota }}{% endif %}">
     </form>
 
     <div class="linha-botoes-final">
         <button type="submit" form="form-livro">Salvar livro</button>
-        
+
         {% if livro %}
             <form method="POST" action="{{ url_for('livros.remover', livro_id=livro.id) }}">
                 <button type="submit">Remover</button>

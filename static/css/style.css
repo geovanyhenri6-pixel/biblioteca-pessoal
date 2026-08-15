@@ -202,3 +202,32 @@ h1 {
     width: 340px;
     margin-top: 10px;
 }
+
+.radio-segmento {
+    display: none;
+}
+
+.segmentado {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.opcao-segmento {
+    flex: 1;
+    text-align: center;
+    padding: 8px;
+    border: 1px solid var(--cor-papel-borda);
+    border-radius: 5px;
+    text-transform: none;
+    font-weight: normal;
+    color: var(--cor-texto-mutado);
+    cursor: pointer;
+}
+
+.radio-segmento:checked + .opcao-segmento {
+    background-color: var(--cor-destaque);
+    color: var(--cor-texto-escuro);
+    font-weight: bold;
+    border-color: var(--cor-destaque);
+}

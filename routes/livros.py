@@ -33,8 +33,14 @@ def novo():
         usuario_id = session["usuario_id"]
         titulo = request.form.get("titulo")
         autor = request.form.get("autor")
+        if not titulo or not autor:
+            flash("Título e autor são obrigatórios.")
+            return render_template('livros/form.html')
+        status = request.form.get("status")
+        nota_raw = request.form.get("nota")
+        nota = float(nota_raw) if nota_raw else None
 
-        criar_livro(usuario_id, titulo, autor)
+        criar_livro(usuario_id, titulo, autor, status, nota)
         flash("Livro adicionado com sucesso!")
 
         return redirect(url_for('livros.listar'))
@@ -56,6 +62,9 @@ def editar(livro_id):
     if request.method == "POST":
         titulo = request.form.get('titulo')
         autor = request.form.get('autor')
+        if not titulo or not autor:
+            flash("Título e autor são obrigatórios.")
+            return render_template('livros/form.html', livro=livro)
         status = request.form.get('status')
         nota_raw = request.form.get('nota')
         nota = float(nota_raw) if nota_raw else None

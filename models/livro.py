@@ -2,11 +2,11 @@ from database import get_db
 
 #---------------------- CRIAR LIVROS -------------------------
 
-def criar_livro(usuario_id, titulo, autor):
+def criar_livro(usuario_id, titulo, autor, status, nota):
     db = get_db()
     cursor = db.execute(
-        "INSERT INTO livros (usuario_id, titulo, autor) VALUES (?, ?, ?)",
-        (usuario_id, titulo, autor)
+        "INSERT INTO livros (usuario_id, titulo, autor, status, nota) VALUES (?, ?, ?, ?, ?)",
+        (usuario_id, titulo, autor, status, nota)
     )
 
     db.commit()
