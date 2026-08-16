@@ -70,6 +70,16 @@ def estatistica_usuario(usuario_id):
         (usuario_id,)
     ).fetchone()
 
+    resultado_quero_ler = db.execute(
+        "SELECT COUNT(*) AS quero_ler FROM livros WHERE usuario_id = ? AND status = 'quero_ler'",
+        (usuario_id,)
+    ).fetchone()
+
+    resultado_lendo = db.execute(
+        "SELECT COUNT(*) AS lendo FROM livros WHERE usuario_id = ? AND status = 'lendo'",
+        (usuario_id,)
+    ).fetchone()
+
     resultado_media = db.execute(
         "SELECT AVG(nota) AS media FROM livros WHERE usuario_id = ? AND status = 'lido'",
         (usuario_id,)
@@ -78,6 +88,8 @@ def estatistica_usuario(usuario_id):
     return {
     "total": resultado_total["total"],
     "lidos": resultado_lidos["lidos"],
+    "quero_ler": resultado_quero_ler["quero_ler"],
+    "lendo": resultado_lendo["lendo"],
     "media": resultado_media["media"]
 }
 

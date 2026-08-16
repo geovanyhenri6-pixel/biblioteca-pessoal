@@ -6,14 +6,15 @@
         <h1>Biblioteca Pessoal</h1>
         <a href="{{ url_for('auth.logout') }}">Sair</a>
     </div>
-    <div class="filtros">
-        <a class="filtro {% if not status_atual %}ativa{% endif %}" href="{{ url_for('livros.listar') }}">Todos</a>
-        <a class="filtro {% if status_atual == 'quero_ler' %}ativa{% endif %}" href="{{ url_for('livros.listar', status='quero_ler') }}">Quero ler</a>
-        <a class="filtro {% if status_atual == 'lendo' %}ativa{% endif %}" href="{{ url_for('livros.listar', status='lendo') }}">Lendo</a>
-        <a class="filtro {% if status_atual == 'lido' %}ativa{% endif %}" href="{{ url_for('livros.listar', status='lido') }}">Lido</a>
-    </div>
-    <a href="{{ url_for('livros.novo') }}">+ Adicionar livro</a>
-
+    <div class="linha-filtros">
+        <div class="filtros">
+            <a class="filtro {% if not status_atual %}ativa{% endif %}" href="{{ url_for('livros.listar') }}">Todos</a>
+            <a class="filtro {% if status_atual == 'quero_ler' %}ativa{% endif %}" href="{{ url_for('livros.listar', status='quero_ler') }}">Quero ler</a>
+            <a class="filtro {% if status_atual == 'lendo' %}ativa{% endif %}" href="{{ url_for('livros.listar', status='lendo') }}">Lendo</a>
+            <a class="filtro {% if status_atual == 'lido' %}ativa{% endif %}" href="{{ url_for('livros.listar', status='lido') }}">Lido</a>
+        </div>
+        <a href="{{ url_for('livros.novo') }}">+ Adicionar livro</a>
+    </div>  
     {% for livro in livros %}
 
     <div class="linha-livro">
@@ -25,10 +26,10 @@
                     <p>{{ livro.autor }}</p>
                 </div>
                 <div class="livro-lado-direito">  
-                    <span class="tag-status status-{{ livro.status }}">{% if livro.status == 'quero_ler' %}Quero ler{% elif livro.status == 'lendo' %}Lendo{% else %}Lido{% endif %}</span>
                     {% if livro.status == 'lido' %}
                         <p class="nota">{{ livro.nota }}</p>
                     {% endif %}
+                    <span class="tag-status status-{{ livro.status }}">{% if livro.status == 'quero_ler' %}Quero ler{% elif livro.status == 'lendo' %}Lendo{% else %}Lido{% endif %}</span>
                 </div>
             </div>
         </div>

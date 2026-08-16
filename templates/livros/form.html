@@ -8,7 +8,7 @@
         <label for="autor">AUTOR</label>
         <input type="text" name="autor" id="autor" value="{% if livro %}{{ livro.autor }}{% endif %}">
         
-        <label>STATUS</label>
+        <label for="nota">STATUS</label>
         <div class="segmentado">
             <input type="radio" name="status" value="quero_ler" id="status-quero_ler" class="radio-segmento"
                 {% if not livro or livro.status == 'quero_ler' %}checked{% endif %}>
@@ -23,8 +23,8 @@
             <label for="status-lido" class="opcao-segmento">Lido</label>
         </div>
 
-        <label for="nota">NOTA</label>
-        <input type="number" name="nota" id="nota" step="0.1" min="1" max="10" value="{% if livro and livro.nota %}{{ livro.nota }}{% endif %}">
+        <label for="nota">NOTA: <span id="valor-nota">{% if livro and livro.nota %}{{ livro.nota }}{% else %}5{% endif %}</span></label>
+        <input type="range" name="nota" id="nota" step="0.1" min="1" max="10" value="{% if livro and livro.nota %}{{ livro.nota }}{% else %}5{% endif %}">
     </form>
 
     <div class="linha-botoes-final">
@@ -36,4 +36,21 @@
             </form>
         {% endif %}
     </div>
+
+    <script>
+    const notaInput = document.getElementById('nota');
+    const notaValor = document.getElementById('valor-nota');
+
+    function atualizarNota() {
+        const valor = parseFloat(notaInput.value);
+        const min = parseFloat(notaInput.min);
+        const max = parseFloat(notaInput.max);
+        const pct = ((valor - min) / (max - min)) * 100;
+        notaValor.textContent = notaInput.value;
+        notaInput.style.setProperty('--pct', pct + '%');
+    }
+
+    notaInput.addEventListener('input', atualizarNota);
+    atualizarNota();
+</script>   
 {% endblock %}
