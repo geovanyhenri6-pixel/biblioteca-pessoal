@@ -2,13 +2,49 @@
 
 
 {% block content %}
-    <p>Total de livros: {{ estatisticas.total }}</p>
-    <p>Livros lidos: {{ estatisticas.lidos }}</p>
+    
+    {% include "barra_topo.html" %}
+    <div class="linha-estatisticas">
+        <div class="card-estatistica">
+            <p class="numero-estatistica">{{ estatisticas.total }}</p>
+            <p class="label-estatisticas">Total de livros</p>
+        </div>
+        <div class="card-estatistica">
+            <p class="numero-estatistica">{{ estatisticas.lidos }}</p>
+            <p class="label-estatisticas">Livros lidos</p>
+        </div>
+        <div class="card-estatistica">
+            <p class="numero-estatistica">{% if estatisticas.media %}{{ estatisticas.media | round(1) }}{% else %}-{% endif %}</p>
+            <p class="label-estatisticas">Nota média</p>
+        </div>
+    </div>
+    {% set maior = [estatisticas.quero_ler, estatisticas.lendo, estatisticas.lidos] | max %}
+    {% if maior == 0 %}{% set maior = 1 %}{% endif %}
 
-    {% if estatisticas.media %}
-        <p>Nota média: {{ estatisticas.media }}</p>
-    {% else %}
-        <p>Nota média: -</p>
-    {% endif %}
+    <div class="grafico-status">
+        <div class="linha-grafico">
+            <span class="grafico-label">Quero ler</span>
+            <div class="grafico-trilha">
+                <div class="grafico-preenchido status-quero_ler" style="width: {{ (estatisticas.quero_ler / maior * 100) }}%;"></div>
+            </div>
+            <span class="grafico-valor">{{ estatisticas.quero_ler }}</span>
+        </div>
+
+        <div class="linha-grafico">
+            <span class="grafico-label">Lendo</span>
+            <div class="grafico-trilha">
+                <div class="grafico-preenchido status-lendo" style="width: {{ (estatisticas.lendo / maior * 100) }}%;"></div>
+            </div>
+            <span class="grafico-valor">{{ estatisticas.lendo }}</span>
+        </div>
+
+        <div class="linha-grafico">
+            <span class="grafico-label">Lido</span>
+            <div class="grafico-trilha">
+                <div class="grafico-preenchido status-lido" style="width: {{ (estatisticas.lidos / maior * 100) }}%;"></div>
+            </div>
+            <span class="grafico-valor">{{ estatisticas.lidos }}</span>
+        </div>
+    </div>
 
 {% endblock %}

@@ -1,11 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-    <div class="barra-topo">
-        <h1>Biblioteca Pessoal</h1>
-        <a href="{{ url_for('auth.logout') }}">Sair</a>
-    </div>
+     
+    {% include "barra_topo.html" %}
     <div class="linha-filtros">
         <div class="filtros">
             <a class="filtro {% if not status_atual %}ativa{% endif %}" href="{{ url_for('livros.listar') }}">Todos</a>
