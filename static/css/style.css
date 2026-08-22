@@ -409,3 +409,25 @@ input[type="range"]::-moz-range-thumb {
     background-color: var(--cor-destaque);
     border-radius: 2px;
 }
+
+.botao-link {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    background-color: var(--cor-destaque);
+    color: var(--cor-texto-escuro);
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.botao-link:hover {
+    background-color: #a98442;
+}
+
+.linha-cta {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 20px;
+}

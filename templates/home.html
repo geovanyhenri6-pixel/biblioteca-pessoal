@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="form-cartao">
+        <h3>Biblioteca Pessoal</h3>
+        <p>Organize os livros que você quer ler, está lendo e já leu.</p>
+
+        <div class="linha-cta">
+            <a href="{{ url_for('auth.login') }}" class="botao-link">Entrar</a>
+            <a href="{{ url_for('auth.cadastro') }}">Criar conta</a>
+        </div>
+    </div>
+
+{% endblock %}

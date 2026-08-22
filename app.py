@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from config import Config
 from database import init_db, close_db
 from routes.auth import auth_bp
@@ -14,3 +14,7 @@ app.register_blueprint(livros_bp)
 def init_db_command():
     init_db()
     print("Banco inicializado.")
+
+@app.route('/')
+def home():
+    return render_template('home.html')
