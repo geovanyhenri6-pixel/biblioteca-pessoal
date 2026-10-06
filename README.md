@@ -1,4 +1,4 @@
-# Biblioteca Pessoal
+  # Biblioteca Pessoal
 
 Um site simples pra organizar a leitura: cadastro dos livros que eu quero ler, que estou lendo ou já li, com nota pros que terminei e um resumo com estatísticas de leitura (quantos livros, nota média, distribuição por status).
 
@@ -14,7 +14,7 @@ Esse é um projeto de estudo — o objetivo principal foi aprender Flask e banco
 
 ```bash
 git clone https://github.com/geovanyhenri6-pixel/biblioteca-pessoal
-cd biblioteca
+cd biblioteca-pessoal
 
 python -m venv venv
 venv\Scripts\activate
